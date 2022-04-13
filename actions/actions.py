@@ -38,7 +38,7 @@ def get_details(pins):
     headers = {}
     response = requests.request("GET", url, headers=headers, data=payload)
     response_txt=json.loads(response.text.encode('utf8'))
-    return {"city": response_txt[0]['PostOffice'][0]['Circle'],"state":response_txt[0]['PostOffice'][0]['State'],"country":response_txt[0]['PostOffice'][0]['Country']}
+    return {"city": response_txt[0]['PostOffice'][0]['Division'],"state":response_txt[0]['PostOffice'][0]['State'],"country":response_txt[0]['PostOffice'][0]['Country']}
 # computer_choice & determine_winner functions refactored from
 # https://github.com/thedanelias/rock-paper-scissors-python/blob/master/rockpaperscissors.py, MIT liscence
  
