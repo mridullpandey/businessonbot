@@ -1,0 +1,76 @@
+version: '2.0'
+config:
+  store_entities_as_slots: true
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- affirm:
+    use_entities: true
+- deny:
+    use_entities: true
+- mood_great:
+    use_entities: true
+- mood_unhappy:
+    use_entities: true
+- bot_challenge:
+    use_entities: true
+- inform:
+    use_entities: true
+- location:
+    use_entities: true
+- pin:
+    use_entities: true
+- tanksgiving:
+    use_entities: true
+entities:
+- pincode
+- choice
+slots:
+  choice:
+    type: rasa.shared.core.slots.CategoricalSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+    values:
+    - city
+    - state
+    - district
+  pincode:
+    type: rasa.shared.core.slots.FloatSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: true
+    max_value: 999999.0
+    min_value: 100000.0
+responses:
+  utter_greet:
+  - text: Hey! How are you?
+  utter_location:
+  - text: What do you want to know? City,country,state
+  utter_cheer_up:
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_pin:
+  - text: Please share the pincode.
+  utter_welcome:
+  - text: you are welcome!
+  utter_more:
+  - text: Hey! i'm afraid if i provided you less information please help me let me know more about your wish.
+actions:
+- action_get_details
+- utter_welcome
+forms: {}
+e2e_actions: []

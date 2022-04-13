@@ -1,0 +1,57 @@
+version: "2.0"
+stories:
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+- story: Story from Conversation ID 1c069217659d4ba69b86fb7d95a61ae7
+  steps:
+  - intent: location
+  - action: utter_location
+  - intent: inform
+    entities:
+    - choice: city
+  - slot_was_set:
+    - choice: city
+  - action: utter_pin
+  - intent: pin
+    entities:
+    - pincode: '206252'
+  - slot_was_set:
+    - pincode: '206252'
+  - action: action_get_details
+  - intent: tanksgiving
+  - action: utter_welcome
+  - intent: knowmore
+  - action: utter_more
+- story: Story from Conversation ID 6054557e32f94ad4add8728eb8494b51
+  steps:
+  - slot_was_set:
+    - choice: state
+  - slot_was_set:
+    - pincode: '229401'
+  - action: action_get_details
+  - intent: tanksgiving
+  - action: utter_welcome
+  - intent: knowmore
+  - action: utter_more
